@@ -4,19 +4,19 @@ from time import time
 from common.tk_drawer import TkDrawer
 from shadow.polyedr import Polyedr
 
-
 tk = TkDrawer()
 try:
     for name in ["cube_modified2"]:
         print("=============================================================")
         print(f"Начало работы с полиэдром '{name}'")
         start_time = time()
-        polyedr = Polyedr(f"data/{name}.geom")
+        polyedr = Polyedr(f"data / {name}.geom")
         polyedr.draw(tk)
         delta_time = time() - start_time
         print(f"Изображение полиэдра '{name}' заняло {delta_time} сек.")
         print(f"Сумма длин невидимых частей частично видимых рёбер, \
-центр которых находится строго внутри сферы с радиусом 2: {polyedr.count_shadows()}")
+        центр которых находится строго внутри сферы \
+        с радиусом 2: {polyedr.count_shadows()}")
         input("Hit 'Return' to continue -> ")
 except(EOFError, KeyboardInterrupt):
     print("\nStop")
