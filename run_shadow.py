@@ -18,6 +18,6 @@ try:
         центр которых находится строго внутри сферы \
         с радиусом 2: {polyedr.count_shadows()}")
         input("Hit 'Return' to continue -> ")
-except(EOFError, KeyboardInterrupt):
+except (EOFError, KeyboardInterrupt):
     print("\nStop")
     tk.close()

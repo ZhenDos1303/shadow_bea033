@@ -1,8 +1,8 @@
-from math import pi
 from functools import reduce
+from math import pi
 from operator import add
+
 from common.r3 import R3
-from common.tk_drawer import TkDrawer
 
 
 class Segment:
@@ -32,7 +32,8 @@ class Segment:
             Segment(self.beg if self.beg > other.fin else other.fin, self.fin)]
 
     def __eq__(self, other):
-        return abs(self.beg - other.beg) < 1e-10 and abs(self.fin - other.fin) < 1e-10
+        return abs(self.beg - other.beg) < 1e-10 \
+            and abs(self.fin - other.fin) < 1e-10
 
 
 class Edge:
@@ -191,8 +192,10 @@ class Polyedr:
             if e in edges:
                 continue
             edges.append(e)
-            gaps_with_ends = [Segment(Edge.SBEG, Edge.SBEG)] + e.gaps + [Segment(Edge.SFIN, Edge.SFIN)]
+            gaps_with_ends = [Segment(Edge.SBEG, Edge.SBEG)] + e.gaps + \
+                             [Segment(Edge.SFIN, Edge.SFIN)]
             for i in range(len(gaps_with_ends) - 1):
-                short_vector = (e.fin - e.beg) * (gaps_with_ends[i + 1].beg - gaps_with_ends[i].fin)
+                short_vector = (e.fin - e.beg) * (gaps_with_ends[i + 1].beg -
+                                                  gaps_with_ends[i].fin)
                 ans += short_vector.squared_sum() ** 0.5
         return ans / self.c
